@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 
 const SearchFilter = ({ products, setFilteredProducts }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
-    setFilteredProducts(
-      products.filter(
-        (product) =>
-          product.title.toLowerCase().includes(query) ||
-          product.description.toLowerCase().includes(query)
-      )
+    setSearch(e.target.value);
+    const filtered = products.filter((product) =>
+      product.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+      product.description.toLowerCase().includes(e.target.value.toLowerCase())
     );
+    setFilteredProducts(filtered);
   };
 
   return (
-    <div className="flex justify-between mb-4">
+    <div className="flex flex-col md:flex-row justify-between mb-4">
       <input
         type="text"
-        placeholder="Search by Title or Description"
-        value={searchQuery}
+        placeholder="Search products..."
+        value={search}
         onChange={handleSearch}
-        className="border p-2 w-full rounded"
+        className="w-full md:w-1/3 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
   );

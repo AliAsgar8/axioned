@@ -30,7 +30,7 @@ const ProductList = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-center mb-4">Product List</h1>
+      <h1 className="text-2xl md:text-3xl font-bold text-center mb-4">Product List</h1>
 
       {/* Search & Filter Component */}
       <SearchFilter products={products} setFilteredProducts={setFilteredProducts} />
@@ -42,20 +42,20 @@ const ProductList = () => {
             <tr>
               <th className="py-2 px-4 border">ID</th>
               <th className="py-2 px-4 border">Title</th>
-              <th className="py-2 px-4 border">Description</th>
+              <th className="py-2 px-4 border hidden md:table-cell">Description</th>
               <th className="py-2 px-4 border">Action</th>
             </tr>
           </thead>
           <tbody>
             {paginatedProducts.map((product) => (
-              <tr key={product.id} className="text-center">
+              <tr key={product.id} className="text-center hover:bg-gray-100">
                 <td className="py-2 px-4 border">{product.id}</td>
                 <td className="py-2 px-4 border">{product.title}</td>
-                <td className="py-2 px-4 border truncate max-w-xs">{product.description}</td>
+                <td className="py-2 px-4 border hidden md:table-cell truncate max-w-xs">{product.description}</td>
                 <td className="py-2 px-4 border">
                   <button
                     onClick={() => setSelectedProduct(product)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded"
+                    className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                   >
                     View
                   </button>
